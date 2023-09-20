@@ -19,9 +19,9 @@
 
 <style scoped>
     header {
-        border: 1px solid red;
         width: 100%;
-        height: 90px;
+        height: 80px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, .2);
     }
 
 </style>
