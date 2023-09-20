@@ -1,9 +1,9 @@
 <script setup>
-
+  import AppView from "@/views/AppView.vue"
 </script>
 
 <template>
-  Quebra taça
+  <AppView />
 </template>
 
 <style>
