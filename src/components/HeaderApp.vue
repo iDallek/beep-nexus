@@ -6,16 +6,25 @@
 
     <nav>
       <ul class="menu">
-        <li><a href="#">Atividades <div class="triangle-down"/></a> 
-          <ul>
+        <li
+          v-on:click="isShowDrop1 = !isShowDrop1"
+          ref="dropdown1"
+          :class="isShowDrop1 ? 'active' : 'deactivate'"
+        >
+          <a href="#">Atividades <div class="triangle-down"/></a> 
+          <ul v-show="isShowDrop1">
             <li><a href="#">Zeramento</a></li>
           </ul>
         </li>
-        <li><a href="#">Relatórios <div class="triangle-down"/></a>
-          <ul>
+        <li
+          v-on:click="isShowDrop2 = !isShowDrop2"
+          ref="dropdown2"
+          :class="isShowDrop2 ? 'active' : 'deactivate'"
+        >
+          <a href="#">Relatórios <div class="triangle-down"/></a>
+          <ul v-show="isShowDrop2">
             <li><a href="#">Perfomance Auditorias</a></li>
             <li><a href="#">Lorem Ipsum</a></li>
-            <li><a href="#">Dolor Sit Amet</a></li>
           </ul>
         </li>
         <li><a href="#">Ajuda</a></li>
@@ -26,7 +35,26 @@
 
 <script>
     export default {
-        
+      data: () => ({
+      isShowDrop1: false,
+      isShowDrop2: false
+      }),
+      created () {
+        window.addEventListener('click', this.closeDropdown)
+      },
+      methods: {
+        closeDropdown (e) {
+          if (!this.$refs.dropdown1.contains(e.target)) {
+            this.isShowDrop1 = false
+          }
+          if (!this.$refs.dropdown2.contains(e.target)) {
+            this.isShowDrop2 = false
+          }
+        }
+      },
+      beforeUnmont () {
+        window.removeEventListener('click', this.closeDropdown)
+      }
     }
 </script>
 
@@ -52,6 +80,7 @@
     display: inline-block;
     top: -2px;
     left: 2px;
+    transition: 0.2s;
   }
 
   .menu {
@@ -85,12 +114,19 @@
     margin: 0;
   }
 
-  .menu li a:hover {
-    color: hsla(160, 100%, 37%, 1);
+  .menu .active > a {
+    transition: 0.2s;
+    text-shadow: .20px 0px .1px,
+                -.20px 0px .1px;
+  }
+  .menu .active a:hover {
+    transition: 0.2s;
+    text-shadow: .20px 0px .1px,
+                -.20px 0px .1px;
   }
 
-  .menu li a:hover .triangle-down  {
-    border-top: 5px solid hsla(160, 100%, 37%, 1);
+  .menu .active .triangle-down  {
+    border-top: 5px solid rgb(255, 255, 255);
     transform: rotate(180deg);
     transition: 0.2s;
   }
@@ -98,14 +134,14 @@
   .menu li ul {
     position: absolute;
     top: 70px;
-    left: 0;
-    display: none;
-    padding: 0;
+    padding: 5px 15px;
+    left: -15px;
+    border-radius: 25px;
     background-color: var(--color-background);
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   }
 
-  .menu li:hover ul, .menu li.over ul{display:block;}
+  .menu li:active ul, .menu li.over ul{display:block;}
 
   #beepnexusLogo {
     font-family: 'Jockey One', sans-serif;
