@@ -30,6 +30,10 @@
         <li><a href="#">Ajuda</a></li>
       </ul>
     </nav>
+
+    <div>
+      Icone
+    </div>
   </div>
 </template>
 
@@ -66,6 +70,10 @@
     align-items: center;
     height: 100%;
     margin: 0 50px;
+  }
+
+  .header div:last-child {
+    margin-left: auto;
   }
 
   .triangle-down {
