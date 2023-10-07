@@ -30,21 +30,6 @@
         <li><a href="#">Ajuda</a></li>
       </ul>
     </nav>
-
-    <v-menu>
-      <template v-slot:activator="{ props }">
-        <v-btn color="primary" icon="mdi-home" v-bind="props"></v-btn>
-      </template>
-
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-        >
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-menu>
   </div>
 </template>
 

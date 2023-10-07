@@ -3,16 +3,19 @@
         <HeaderApp />
     </header>
     <main>
-        Conteudo
+        <ReadXlsx />
     </main>
 </template>
 
 <script>
     import HeaderApp from '@/components/HeaderApp.vue';
+    // Temp
+    import ReadXlsx from '@/components/ReadXlsx.vue';
 
     export default {
         components: {
-            HeaderApp
+            HeaderApp,
+            ReadXlsx
         }
     }
 </script>
