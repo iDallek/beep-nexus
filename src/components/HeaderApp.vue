@@ -31,9 +31,20 @@
       </ul>
     </nav>
 
-    <div>
-      Icone
-    </div>
+    <v-menu>
+      <template v-slot:activator="{ props }">
+        <v-btn color="primary" icon="mdi-home" v-bind="props"></v-btn>
+      </template>
+
+      <v-list>
+        <v-list-item
+          v-for="(item, i) in items"
+          :key="i"
+        >
+          <v-list-item-title>{{ item.title }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
   </div>
 </template>
 
@@ -142,9 +153,9 @@
   .menu li ul {
     position: absolute;
     top: 70px;
-    padding: 5px 15px;
+    padding: 5px 10px;
     left: -15px;
-    border-radius: 25px;
+    border-radius: 15px;
     background-color: var(--color-background);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   }
