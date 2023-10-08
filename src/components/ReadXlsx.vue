@@ -4,7 +4,7 @@
       accept=".xlsx"
       label="Escolha o arquivo"
       :show-size="1000"
-      @change="onChange"
+      @change="onChange($event)"
     >
       <template v-slot:selection="{ fileNames }">
         <template v-for="(fileName, index) in fileNames" :key="fileName">
@@ -23,38 +23,32 @@ import moment from 'moment'
 import typesOfDatasheet from '../common/rubDatasheetTypes'
 
 function identifyDatasheet(firstRow: any): string {
-  const types = typesOfDatasheet
-
-  const notAvailable: string[] = []
-  let keyName = ""
-  let datasheetType = "undefinedType"
+  const types = typesOfDatasheet;
+  let keyName = "";
 
   for (const el of types) {
-    keyName = Object.keys(el)[0]
-    let matchLoops = 0
+    keyName = Object.keys(el)[0];
+    let matchLoops = 0;
 
     el[keyName].forEach((key: string) => {
       if (firstRow.hasOwnProperty(key)) {
-        matchLoops += 1
+        matchLoops++;
       }
-    })
+    });
 
-    if (matchLoops == el[keyName].length) {
-      datasheetType = keyName
-      break
+    if (matchLoops === el[keyName].length) {
+      return keyName;
     }
   }
 
-  console.log(datasheetType)
-
-  if (notAvailable.length == 0) {
-    return keyName
+  if (keyName !== "undefinedType") {
+    return keyName;
   } else {
-    return 'undefinedType'
+    return "undefinedType";
   }
 }
 
-async function onChange(e: any): Promise<void> {
+async function onChange(e: any, datasheetType?: string): Promise<void> {
   const files = await e.srcElement?.files
   const xlsxData = {
     date: `${moment().format('L')} ${moment().format('dddd')}`
@@ -65,7 +59,7 @@ async function onChange(e: any): Promise<void> {
     const wb = read(content)
 
     const data = utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], {defval:""})
-    const type = identifyDatasheet(data[0])
+    const type = datasheetType || identifyDatasheet(data[0])
 
     if (type != 'undefinedType') {
       xlsxData['datasheetType'] = type
