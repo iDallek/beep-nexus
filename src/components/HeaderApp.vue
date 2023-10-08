@@ -143,6 +143,7 @@
     border-radius: 15px;
     background-color: var(--color-background);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1;
   }
 
   .menu li:active ul, .menu li.over ul{display:block;}
