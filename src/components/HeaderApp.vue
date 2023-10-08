@@ -1,8 +1,8 @@
 <template>
   <div class="header">
-    <div id="beepnexusLogo">
-      BEEP<e>NEXUS</e>
-    </div>
+    <router-link to="/" id="beepnexusLogo">
+    <e>BEEP</e>NEXUS
+    </router-link>
 
     <nav>
       <ul class="menu">
@@ -11,9 +11,9 @@
           ref="dropdown1"
           :class="isShowDrop1 ? 'active' : 'deactivate'"
         >
-          <a href="#">Atividades <div class="triangle-down"/></a> 
+          <a>Atividades <div class="triangle-down"/></a> 
           <ul v-show="isShowDrop1">
-            <li><a href="#">Zeramento</a></li>
+            <li><router-link to="/atividades/zeramento">Zeramento</router-link></li>
           </ul>
         </li>
         <li
@@ -21,10 +21,15 @@
           ref="dropdown2"
           :class="isShowDrop2 ? 'active' : 'deactivate'"
         >
-          <a href="#">Relatórios <div class="triangle-down"/></a>
+          <a>Relatórios <div class="triangle-down"/></a>
           <ul v-show="isShowDrop2">
-            <li><a href="#">Perfomance Auditorias</a></li>
-            <li><a href="#">Lorem Ipsum</a></li>
+            <li>
+              <router-link to="/relatorios/perfomance-auditorias">
+                Perfomance Auditorias
+              </router-link></li>
+            <li to>
+              <router-link to="/relatorios/lorem-ipsum">Lorem Ipsum</router-link>
+            </li>
           </ul>
         </li>
         <li><a href="#">Ajuda</a></li>
@@ -107,6 +112,7 @@
     text-decoration: none;
     padding: 20px 10px;
     display: block;
+    cursor: pointer;
     /* background-color: red; */
 
   }
@@ -155,7 +161,7 @@
   }
 
   #beepnexusLogo e {
-    color: hsla(160, 100%, 37%, 1);
+    color: var(--color-text);
   }
 
 </style>
