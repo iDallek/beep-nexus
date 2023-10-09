@@ -7,6 +7,11 @@ const router = createRouter({
       path: '/',
       name: 'Home',
       component: () => import('@/views/Home.vue')
+    },
+    {
+      path: '/relatorios/perfomance-auditorias',
+      name: 'PerfomanceAudits',
+      component: () => import('@/views/PerfomanceAudits.vue')
     }
   ]
 })

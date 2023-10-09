@@ -1,19 +1,19 @@
 <script setup>
-  import AppView from "@/views/AppView.vue"
   import HeaderApp from '@/components/HeaderApp.vue';
 import { RouterView } from "vue-router";
 </script>
 
 <template>
-  <HeaderApp />
-  <RouterView/>
+  <div class="headerApp">
+    <HeaderApp />
+  </div>
+  
+  <RouterView class="router"/>
 </template>
 
 <style>
-header {
-    width: 100%;
-    height: 80px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+  .router {
+    height: 100px;
   }
 
 </style>

@@ -24,7 +24,7 @@
           <a>Relatórios <div class="triangle-down"/></a>
           <ul v-show="isShowDrop2">
             <li>
-              <router-link to="/relatorios/perfomance-auditorias">
+              <router-link to="relatorios/perfomance-auditorias">
                 Perfomance Auditorias
               </router-link></li>
             <li to>
@@ -69,8 +69,11 @@
   .header {
     display: flex;
     align-items: center;
-    height: 100%;
-    margin: 0 50px;
+    height: 100px;
+    width: 100%;
+    padding: 0 50px;
+    margin-bottom: 50px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .2);
   }
 
   .header div:last-child {
